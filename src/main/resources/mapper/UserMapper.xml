@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stu.mapper.UserMapper">
+    <update id="update" parameterType="com.stu.entity.User">
+        update userdata
+        <set>
+            <if test="username != null and username != ''">username=#{username},</if>
+            <if test="password != null and password != ''">password=#{password},</if>
+            <if test="nickname != null and nickname != ''">nickname=#{nickname},</if>
+            <if test="phoneNumber != null and phoneNumber != ''">phone_number=#{phoneNumber},</if>
+        </set>
+        where id=#{id}
+    </update>
+</mapper>
