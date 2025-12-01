@@ -43,13 +43,13 @@ public class TeacherController {
     }
 
     @PutMapping("/{id}")
-    public Result<String> updateTeacher(@PathVariable Integer id, @RequestBody TeacherDTO teacherDTO){
+    public Result<String> updateTeacher(@PathVariable Long id, @RequestBody TeacherDTO teacherDTO){
         teacherService.updateTeacher(id, teacherDTO);
         return Result.success("更新老师成功");
     }
 
     @GetMapping("/{id}")
-    public Result<Teacher> getTeacherById(@PathVariable Integer id){
+    public Result<Teacher> getTeacherById(@PathVariable Long id){
         Teacher teacher = teacherService.getById(id);
         if (teacher == null) {
             return Result.error("老师不存在");

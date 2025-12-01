@@ -6,7 +6,7 @@ import com.stu.entity.Teacher;
 public interface TeacherService {
     void createTeacher(TeacherDTO teacherDTO);
 
-    void updateTeacher(Integer id, TeacherDTO teacherDTO);
+    void updateTeacher(Long id, TeacherDTO teacherDTO);
 
-    Teacher getById(Integer id);
+    Teacher getById(Long id);
 }

@@ -36,7 +36,7 @@ public class EvaluationServiceImpl implements EvaluationService {
     public void createEvaluation(EvaluationDTO dto) {
         // 从dto中获取评价信息
         Long studentId = BaseContext.getCurrentId();
-        Integer teacherId = dto.getTeacherId();
+        Long teacherId = dto.getTeacherId();
         Float score = dto.getScore();
         String context = dto.getContext();
         Evaluation evaluation = Evaluation.builder()
@@ -58,7 +58,7 @@ public class EvaluationServiceImpl implements EvaluationService {
     }
 
     @Override
-    public List<EvaluationVO> getByTeacherId(Integer teacherId) {
+    public List<EvaluationVO> getByTeacherId(Long teacherId) {
         List<Evaluation> evaluations = evaluationMapper.getByTeacherId(teacherId);
         String teacherName = teacherMapper.getByTeacherId(teacherId).getName();
 
@@ -92,7 +92,7 @@ public class EvaluationServiceImpl implements EvaluationService {
     }
 
     @Override
-    public EvaluationStaticsVO getStaticsByTeacherId(Integer teacherId) {
+    public EvaluationStaticsVO getStaticsByTeacherId(Long teacherId) {
 
         // 查询该老师的全部评价
         List<Evaluation> evaluations = evaluationMapper.getByTeacherId(teacherId);
@@ -119,27 +119,27 @@ public class EvaluationServiceImpl implements EvaluationService {
         vo.setTotalCount(evaluations.size());
 
         // 提取所有分数
-        List<Float> scores = evaluations.stream()
+        List<Double> scores = evaluations.stream()
                 .map(Evaluation::getScore)
                 .toList();
 
         // 平均分
         double avg = scores.stream()
-                .mapToDouble(Float::floatValue)
+                .mapToDouble(Double::floatValue)
                 .average()
                 .orElse(0.0);
         vo.setAvgScore(avg);
 
         // 最高分
         double max = scores.stream()
-                .mapToDouble(Float::floatValue)
+                .mapToDouble(Double::floatValue)
                 .max()
                 .orElse(0.0);
         vo.setMaxScore(max);
 
         // 最低分
         double min = scores.stream()
-                .mapToDouble(Float::floatValue)
+                .mapToDouble(Double::floatValue)
                 .min()
                 .orElse(0.0);
         vo.setMinScore(min);

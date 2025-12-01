@@ -10,9 +10,9 @@ import java.util.List;
 public interface EvaluationService {
     void createEvaluation(EvaluationDTO dto);
 
-    List<EvaluationVO> getByTeacherId(Integer teacherId);
+    List<EvaluationVO> getByTeacherId(Long teacherId);
 
     List<EvaluationVO> getByUserId(Long currentId);
 
-    EvaluationStaticsVO getStaticsByTeacherId(Integer teacherId);
+    EvaluationStaticsVO getStaticsByTeacherId(Long teacherId);
 }

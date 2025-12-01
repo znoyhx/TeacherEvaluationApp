@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Teacher {
-    private Integer id;
+    private Long id;
 
     private String name;
 

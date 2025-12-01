@@ -12,13 +12,13 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EvaluationVO {
-    private Integer id;
+    private Long id;
 
     private String teacherName;
 
     private String studentName;
 
-    private Float score;
+    private Double score;
 
     private String context;
 

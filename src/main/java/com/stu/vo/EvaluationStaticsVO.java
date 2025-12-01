@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class EvaluationStaticsVO {
     // --- 基础信息 ---
-    private Integer teacherId;      // 老师ID
+    private Long teacherId;      // 老师ID
     private String teacherName;     // 老师姓名
 
     // --- 分数统计 ---

@@ -14,7 +14,7 @@ public interface TeacherMapper {
     void update(Teacher teacher);
 
     @Select("select * from teacher where id = #{id}")
-    Teacher getByTeacherId(Integer id);
+    Teacher getByTeacherId(Long id);
 
     @Select("select * from teacher where name = #{name}")
     Teacher getByName(String name);

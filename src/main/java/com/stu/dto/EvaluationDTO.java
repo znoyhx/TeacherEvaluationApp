@@ -6,7 +6,7 @@ import java.util.List;
 
 @Data
 public class EvaluationDTO {
-    private Integer teacherId;
+    private Long teacherId;
 
     private Float score;
 
