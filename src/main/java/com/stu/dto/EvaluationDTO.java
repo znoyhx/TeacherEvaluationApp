@@ -8,7 +8,7 @@ import java.util.List;
 public class EvaluationDTO {
     private Long teacherId;
 
-    private Float score;
+    private Double score;
 
 
     private String context;

@@ -37,7 +37,7 @@ public class EvaluationServiceImpl implements EvaluationService {
         // 从dto中获取评价信息
         Long studentId = BaseContext.getCurrentId();
         Long teacherId = dto.getTeacherId();
-        Float score = dto.getScore();
+        Double score = dto.getScore();
         String context = dto.getContext();
         Evaluation evaluation = Evaluation.builder()
                .studentId(studentId)
