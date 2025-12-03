@@ -12,13 +12,13 @@ public class TeacherMapperImpl extends Database implements TeacherMapper {
 
     public void insert(Teacher teacher) {
         try {
-            String insertSql = "INSERT INTO evaluation (id, name, title, department, research_area) VALUES (?, ?, ?, ?, ?)";
+            String insertSql = "INSERT INTO teacher (id, name, title, department, research_area) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement pstmt = conn.prepareStatement(insertSql);
-            pstmt.setLong(0, teacher.getId());
-            pstmt.setString(1, teacher.getName());
-            pstmt.setString(2, teacher.getTitle());
-            pstmt.setString(3, teacher.getDepartment());
-            pstmt.setString(4, teacher.getResearchArea());
+            pstmt.setLong(1, teacher.getId());
+            pstmt.setString(2, teacher.getName());
+            pstmt.setString(3, teacher.getTitle());
+            pstmt.setString(4, teacher.getDepartment());
+            pstmt.setString(5, teacher.getResearchArea());
             pstmt.executeUpdate();
             pstmt.close();
         } catch (Exception e) {
@@ -58,6 +58,7 @@ public class TeacherMapperImpl extends Database implements TeacherMapper {
                     String research_area = rs.getString("research_area");
                     ret = new Teacher(id, name, title,
                                       department, research_area);
+                    break;
                 }
             }
 
@@ -88,6 +89,7 @@ public class TeacherMapperImpl extends Database implements TeacherMapper {
                     String research_area = rs.getString("research_area");
                     ret = new Teacher(id, name, title,
                                       department, research_area);
+                    break;
                 }
             }
 
