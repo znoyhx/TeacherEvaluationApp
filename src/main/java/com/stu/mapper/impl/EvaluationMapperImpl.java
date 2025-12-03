@@ -16,7 +16,7 @@ public class EvaluationMapperImpl extends Database implements EvaluationMapper {
         Evaluation ret = null;
         try {
             // ===== 查询数据 =====
-            String sql = "SELECT id, name, title, department, research_area FROM teacher";
+            String sql = "SELECT id, student_id, teacher_id, score, context, create_time FROM evaluation";
             ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next()) {
