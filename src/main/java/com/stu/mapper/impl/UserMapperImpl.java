@@ -14,10 +14,10 @@ public class UserMapperImpl extends Database implements UserMapper {
 
     public void insert(User user) {
         try {
-            String insertSql = "INSERT INTO student (id, username, password, nickname, phonenumber) VALUES (?, ?, ?, ?, ?)";
+            String insertSql = "INSERT INTO userdata (id, username, password, nickname, phone_number) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement pstmt = conn.prepareStatement(insertSql);
             pstmt.setLong(1, user.getId());
-            pstmt.setString(2, user.getUserName());
+            pstmt.setString(2, user.getUsername());
             pstmt.setString(3, user.getPassword());
             pstmt.setString(4, user.getNickname());
             pstmt.setString(5, user.getPhoneNumber());
@@ -29,9 +29,9 @@ public class UserMapperImpl extends Database implements UserMapper {
     }
 
     public void update(User user) {
-        String updateSql = "UPDATE teacher SET username = ?, password = ?, nickname = ?, phonenumber = ? WHERE id = ?";
+        String updateSql = "UPDATE teacher SET username = ?, password = ?, nickname = ?, phone_number = ? WHERE id = ?";
         try (PreparedStatement ps = conn.prepareStatement(updateSql)) {
-            ps.setString(1, user.getUserName());
+            ps.setString(1, user.getUsername());
             ps.setString(2, user.getPassword());
             ps.setString(3, user.getNickname());
             ps.setString(4, user.getPhoneNumber());
@@ -39,7 +39,7 @@ public class UserMapperImpl extends Database implements UserMapper {
 
             int rows = ps.executeUpdate(); // 返回受影响的行数
             if (rows <= 0) {
-                throw new IllegalArgumentException("No such student");
+                throw new IllegalArgumentException("No such userdata");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -50,7 +50,7 @@ public class UserMapperImpl extends Database implements UserMapper {
         User ret = null;
         try {
             // ===== 查询数据 =====
-            String sql = "SELECT id, username, password, nickname, phonenumber FROM student";
+            String sql = "SELECT id, username, password, nickname, phone_number FROM userdata";
             ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next()) {
@@ -58,13 +58,13 @@ public class UserMapperImpl extends Database implements UserMapper {
                     String username = rs.getString("username");
                     String password = rs.getString("password");
                     String nickname = rs.getString("nickname");
-                    String phonenumber = rs.getString("phonenumber");
+                    String phonenumber = rs.getString("phone_number");
                     ret = new User(id, username, password, nickname, phonenumber);
                 }
             }
 
             if (ret == null) {
-                throw new IllegalArgumentException("No such student");
+                throw new IllegalArgumentException("No such userdata");
             }
             rs.close();
 
@@ -79,7 +79,7 @@ public class UserMapperImpl extends Database implements UserMapper {
         User ret = null;
         try {
             // ===== 查询数据 =====
-            String sql = "SELECT id, username, password, nickname, phonenumber FROM student";
+            String sql = "SELECT id, username, password, nickname, phone_number FROM userdata";
             ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next()) {
@@ -87,13 +87,13 @@ public class UserMapperImpl extends Database implements UserMapper {
                     Long id = rs.getLong("id");
                     String password = rs.getString("password");
                     String nickname = rs.getString("nickname");
-                    String phonenumber = rs.getString("phonenumber");
+                    String phonenumber = rs.getString("phone_number");
                     ret = new User(id, username, password, nickname, phonenumber);
                 }
             }
 
             if (ret == null) {
-                throw new IllegalArgumentException("No such student");
+                throw new IllegalArgumentException("No such userdata");
             }
             rs.close();
 
@@ -108,7 +108,7 @@ public class UserMapperImpl extends Database implements UserMapper {
         List<User> ret = new ArrayList<>();
         try {
             // ===== 查询数据 =====
-            String sql = "SELECT id, username, password, nickname, phonenumber FROM student";
+            String sql = "SELECT id, username, password, nickname, phone_number FROM userdata";
             ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next()) {
@@ -116,14 +116,14 @@ public class UserMapperImpl extends Database implements UserMapper {
                     Long id = rs.getLong("id");
                     String username = rs.getString("username");
                     String password = rs.getString("password");
-                    String phonenumber = rs.getString("phonenumber");
+                    String phonenumber = rs.getString("phone_number");
                     User data = new User(id, username, password, nickname, phonenumber);
                     ret.add(data);
                 }
             }
 
             if (ret.isEmpty()) {
-                throw new IllegalArgumentException("No such student");
+                throw new IllegalArgumentException("No such userdata");
             }
             rs.close();
 
