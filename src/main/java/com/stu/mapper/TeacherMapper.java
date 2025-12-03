@@ -1,21 +1,19 @@
 package com.stu.mapper;
 
 import com.stu.entity.Teacher;
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface TeacherMapper {
-
-    @Insert("INSERT INTO teacher (name, title, department, research_area) VALUES (#{name}, #{title}, #{department}, #{researchArea})")
+    // 插入新的老师数据(TODO: 内部没有对数据库内是否已有该评价进行检查)
     void insert(Teacher teacher);
 
+    // 更新老师数据
     void update(Teacher teacher);
 
-    @Select("select * from teacher where id = #{id}")
-    Teacher getByTeacherId(Integer id);
+    // 根据教师ID获取教师信息
+    Teacher getByTeacherId(Long id);
 
-    @Select("select * from teacher where name = #{name}")
+    // 根据教师姓名获取教师信息
     Teacher getByName(String name);
 }

@@ -39,7 +39,7 @@ public class EvaluationController {
 
     @GetMapping("/teacher/{teacherId}")
     @ApiOperation("根据教师id查询评价")
-    public Result<List<EvaluationVO>> getByTeacherId(@PathVariable Integer teacherId) {
+    public Result<List<EvaluationVO>> getByTeacherId(@PathVariable Long teacherId) {
         List<EvaluationVO> evaluations = evaluationService.getByTeacherId(teacherId);
 
         return Result.success(evaluations);
@@ -55,7 +55,7 @@ public class EvaluationController {
 
     @GetMapping("/teacher/{teacherId}/statics")
     @ApiOperation("根据教师id查询评价统计")
-    public Result<EvaluationStaticsVO> getStaticsByTeacherId(@PathVariable Integer teacherId) {
+    public Result<EvaluationStaticsVO> getStaticsByTeacherId(@PathVariable Long teacherId) {
         EvaluationStaticsVO statics = evaluationService.getStaticsByTeacherId(teacherId);
         return Result.success(statics);
     }

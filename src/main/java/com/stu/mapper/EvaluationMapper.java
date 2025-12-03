@@ -1,23 +1,21 @@
 package com.stu.mapper;
 
 import com.stu.entity.Evaluation;
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
 @Mapper
 public interface EvaluationMapper {
-    @Select("select * from evaluation where student_id = #{studentId} and teacher_id = #{teacherId}")
-    Evaluation getByStudentIdAndTeacherId(Long studentId, Integer teacherId);
+    // 根据学生ID和教师ID获取评价
+    Evaluation getByStudentIdAndTeacherId(Long studentId, Long teacherId);
 
-    @Insert("insert into evaluation (student_id, teacher_id, score, context) values (#{studentId}, #{teacherId}, #{score}, #{context})")
+    // 插入新的评价(TODO: 内部没有对数据库内是否已有该评价进行检查)
     void insert(Evaluation evaluation);
 
-    @Select("select * from evaluation where teacher_id = #{teacherId}")
-    List<Evaluation> getByTeacherId(Integer teacherId);
+    // 根据教师ID获取所有评价
+    List<Evaluation> getByTeacherId(Long teacherId);
 
-    @Select("select * from evaluation where student_id = #{currentId}")
+    // 根据用户ID获取所有评价
     List<Evaluation> getByUserId(Long currentId);
 }

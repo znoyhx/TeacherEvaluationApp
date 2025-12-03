@@ -1,29 +1,24 @@
 package com.stu.mapper;
 
 import com.stu.entity.User;
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
 @Mapper
 public interface UserMapper {
-
-    @Select("select * from userdata where username = #{username}")
+    // 根据用户名获取用户信息
     User getByUsername(String username);
 
-    @Insert("insert into userdata (username, password, nickname, phone_number) values (#{username}, #{password}, #{nickname}, #{phoneNumber})")
+    // 插入新的用户(TODO: 内部没有对数据库内是否已有该评价进行检查)
     void insert(User user);
 
-    @Select("select * from userdata where nickname like CONCAT('%', #{nickname}, '%')")
+    // 根据昵称获取用户列表
     List<User> getByNickname(String nickname);
 
-    @Select("select * from userdata where id = #{id}")
+    // 根据用户ID获取用户信息
     User getById(Long id);
 
-
+    // 更新用户信息
     void update(User user);
 }

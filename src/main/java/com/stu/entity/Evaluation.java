@@ -5,22 +5,29 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.sql.*;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Evaluation {
-    private Integer id;
+    private Long id;
 
     private Long studentId;
 
-    private Integer teacherId;
+    private Long teacherId;
 
-    private Float score;
+    private Double score;
 
     private String context;
 
-    private LocalDateTime createTime;
+    private Timestamp createTime;
+
+    public Long getId() { return id; }
+    public Long getStudentId() { return studentId; }
+    public Long getTeacherId() { return teacherId; }
+    public Double getScore() { return score; }
+    public String getContext() { return context; }
+    public Timestamp getCreateTime() { return createTime; }
 }

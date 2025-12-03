@@ -29,7 +29,7 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public void updateTeacher(Integer id, TeacherDTO teacherDTO) {
+    public void updateTeacher(Long id, TeacherDTO teacherDTO) {
         //TODO:小bug, 可以改成别人的名字
         checkIfValid(teacherDTO);
         Teacher teacher = new Teacher();
@@ -43,7 +43,7 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public Teacher getById(Integer id) {
+    public Teacher getById(Long id) {
         return teacherMapper.getByTeacherId(id);
     }
 
