@@ -47,12 +47,12 @@ public class EvaluationMapperImpl extends Database implements EvaluationMapper {
         try {
             String insertSql = "INSERT INTO evaluation (student_id, teacher_id, score, context) VALUES (?, ?, ?, ?)";
             PreparedStatement pstmt = conn.prepareStatement(insertSql);
-            pstmt.setLong(0, evaluation.getId());
-            pstmt.setLong(1, evaluation.getStudentId());
-            pstmt.setLong(2, evaluation.getTeacherId());
-            pstmt.setDouble(3, evaluation.getScore());
-            pstmt.setString(4, evaluation.getContext());
-            pstmt.setTimestamp(5, evaluation.getCreateTime());
+            pstmt.setLong(1, evaluation.getId());
+            pstmt.setLong(2, evaluation.getStudentId());
+            pstmt.setLong(3, evaluation.getTeacherId());
+            pstmt.setDouble(4, evaluation.getScore());
+            pstmt.setString(5, evaluation.getContext());
+            pstmt.setTimestamp(6, evaluation.getCreateTime());
             pstmt.executeUpdate();
             pstmt.close();
         } catch (Exception e) {
