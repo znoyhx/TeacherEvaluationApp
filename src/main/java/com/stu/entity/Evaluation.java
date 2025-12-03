@@ -5,8 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
 import java.sql.*;
 
 @Data
@@ -25,7 +23,6 @@ public class Evaluation {
     private String context;
 
     private Timestamp createTime;
-
 
     public Long getId() { return id; }
     public Long getStudentId() { return studentId; }
