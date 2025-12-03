@@ -20,7 +20,7 @@ public class User {
     private String phoneNumber;
 
     public Long getId() { return id; }
-    public String getUserName() { return username; }
+    public String getUsername() { return username; }
     public String getPassword() { return password; }
     public String getNickname() { return nickname; }
     public String getPhoneNumber() { return phoneNumber; }
