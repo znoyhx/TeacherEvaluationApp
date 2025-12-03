@@ -1,6 +1,5 @@
 package com.stu.entity;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,4 +20,9 @@ public class Teacher {
 
     private String researchArea;
 
+    public Long getId() { return id; }
+    public String getName() { return name; }
+    public String getTitle() { return title; }
+    public String getDepartment() { return department; }
+    public String getResearchArea() { return researchArea; }
 }
